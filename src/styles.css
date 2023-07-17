@@ -2,3 +2,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-dialog__surface{
+  background-color: transparent !important;
+}
+
+body{
+  background-image: url(./assets/fondo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+}

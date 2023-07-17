@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Pictures } from '../interfaces/picture.interfaces';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PictureService {
 
-  private ELEMENT_DATA: Pictures[] = [
-    {FECHA: "15/20/2023", NOMBRE:"miFoto.jpg"},
-    {FECHA: "17/20/202", NOMBRE:"miFoto2.png"},
-  ];
+  private url:string = 'http://kosmetikon.myqnapcloud.com:44444'
 
-  constructor() { }
 
-  getPictures():Pictures[]{
-    return this.ELEMENT_DATA;
+  constructor(private http:HttpClient) { }
+
+
+  getPictures():Observable<any>{
+    return this.http.get<any>(`${this.url}/files/getFileList`).pipe(
+      map( pictures => pictures.data )
+    )
   }
 }

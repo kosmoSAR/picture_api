@@ -30,7 +30,6 @@ export class DlgAddComponent {
   disabledOption: boolean = false
 
   onSelect(event: any) {
-    console.log(event);
     this.files.push(...event.addedFiles);
     this.disabledOption = true;
   }

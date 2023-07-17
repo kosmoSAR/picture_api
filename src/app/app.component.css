@@ -1,9 +1,15 @@
 .title{
   width: 100%;
-  height: 15rem;
+  height: 7rem;
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+}
+
+.title h1{
+  font-size: 3rem;
+  font-family: fantasy;
+  color: white;
 }
 
 .picture_table{
@@ -22,4 +28,9 @@ picture-list{
   display: flex;
   justify-content: end;
   margin-bottom: 1rem;
+}
+
+.add_button button{
+  height: 3rem;
+  font-size: 1.2rem;
 }

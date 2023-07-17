@@ -24,18 +24,33 @@ export class AppComponent implements OnInit{
   }
 
   loadPictures(){
-    this.pictureList = this._pictureService.getPictures()
+    this._pictureService.getPictures().subscribe({
+      next: ( pictures ) => {
+        console.log(pictures);
+        this.pictureList = pictures;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
   }
 
   openDialogAdd(): void{
     const dialogRef = this._dialog.open(DlgAddComponent);
     dialogRef.beforeClosed().subscribe({
-      next: ( picture: PicturesDTO ) => {
+      next: ( picture: any ) => {
         if ( picture ) {
-          console.log(picture);
-          const file = picture.NOMBRE as Blob;
-          // this._fileService.uploadPife(file, '')
-          console.log(file);
+          const file = picture.NOMBRE;
+          const nombre = picture.NOMBRE.name
+
+          this._fileService.uploadFile(file, nombre).subscribe({
+            next: (resp) => {
+              console.log(resp);
+            },
+            error: (error) => {
+              console.log(error);
+            }
+          })
         }
       }
     })

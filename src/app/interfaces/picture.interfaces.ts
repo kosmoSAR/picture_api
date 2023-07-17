@@ -1,6 +1,6 @@
 export interface Pictures {
   FECHA: string;
-  NOMBRE: string;
+  ENLACE: string;
 }
 
 export interface PicturesDTO {

@@ -1,26 +1,28 @@
-<h1 mat-dialog-title>Agrega una imagen</h1>
-<div mat-dialog-content>
-  <form [formGroup]="forms" (ngSubmit)="createPicture()">
-    <mat-form-field>
-      <mat-label>Elige una fecha</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="FECHA">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+<div class="principal">
+  <h1 mat-dialog-title style="color: white; text-align: center;">Agrega una imagen</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="forms" (ngSubmit)="createPicture()">
+      <mat-form-field>
+        <mat-label>Elige una fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="FECHA">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <!-- <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
-      <mat-label>Elige un fichero</mat-label>
-      <input type="file" placeholder="Ex. Pizza" formControlName="NOMBRE">
-    </div> -->
+      <!-- <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+        <mat-label>Elige un fichero</mat-label>
+        <input type="file" placeholder="Ex. Pizza" formControlName="NOMBRE">
+      </div> -->
 
-    <ngx-dropzone style="margin-bottom: 1rem; margin-top: 1rem;" [accept]="'image/*'" [disabled]="disabledOption" (change)="onSelect($event)">
-      <ngx-dropzone-label>Sueltalo aquí</ngx-dropzone-label>
-      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
-        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-      </ngx-dropzone-image-preview>
-    </ngx-dropzone>
+      <ngx-dropzone style="margin-bottom: 1rem; margin-top: 1rem;" [accept]="'image/*'" [disabled]="disabledOption" (change)="onSelect($event)">
+        <ngx-dropzone-label>Sueltalo aquí</ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
 
-    <button mat-stroked-button color="primary" type="submit" [disabled]="forms.invalid" >Aceptar</button>
-  </form>
+      <button mat-raised-button color="primary" type="submit" [disabled]="forms.invalid" >Aceptar</button>
+    </form>
+  </div>
 </div>

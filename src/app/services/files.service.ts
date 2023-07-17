@@ -9,23 +9,26 @@ import * as fileSaver from 'file-saver';
 })
 export class FilesService {
 
+  private url:string = 'http://kosmetikon.myqnapcloud.com:44444'
+
   constructor(private http:HttpClient) { }
 
-  getFile(name:string, url:string, type: string){
-    return this.http.get(url, {responseType: 'blob'})
+  getFile(name:string){
+    return this.http.get(`${this.url}/files/getFileList`, {responseType: 'blob'})
     .pipe(
       tap( contect => {
-        const blob = new Blob([contect], {type});
+        const blob = new Blob([contect]);
         fileSaver.saveAs(blob, name)
       }),
       map( () => true )
     )
   }
 
-  uploadPife(file: Blob, url:string){
+  uploadFile(file: Blob, nombre: string){
     const dto = new FormData();
-    dto.append('file',file);
-    return this.http.post(url, dto)
+    dto.append('ENLACE', nombre );
+    dto.append('ARCHIVO', file );
+    return this.http.post(`${this.url}/files/newFile` , dto )
   }
 
 }
