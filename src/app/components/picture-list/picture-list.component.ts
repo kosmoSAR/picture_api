@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Input } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,21 +10,30 @@ import { FilesService } from 'src/app/services/files.service';
   templateUrl: './picture-list.component.html',
   styleUrls: ['./picture-list.component.css']
 })
-export class PictureListComponent implements OnChanges{
+export class PictureListComponent implements OnChanges, OnInit{
 
   displayedColumns: string[] = ['FECHA', 'ENLACE', 'acciones']
 
   @Input() public pictureList: Pictures[] = [];
   public data!: any;
+  public loading: boolean = true;
 
   constructor(private _fileService: FilesService){}
+
+  ngOnInit(): void {
+    console.log(this.loading);
+
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (this.pictureList.length > 0) {
+      this.loading = false
+    }
     this.data = new MatTableDataSource<Pictures>(this.pictureList);
     this.data.paginator = this.paginator;
-    console.log(this.pictureList);
+    console.log(this.loading);
   }
 
   @Output() picture: EventEmitter<any> = new EventEmitter();

@@ -17,6 +17,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [],
@@ -36,6 +38,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -52,7 +55,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatTooltipModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

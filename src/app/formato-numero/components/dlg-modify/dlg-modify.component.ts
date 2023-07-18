@@ -11,6 +11,8 @@ import { Format } from 'src/app/interfaces/format.interface';
 export class DlgModifyComponent {
 
   public forms: FormGroup;
+  public numberInput: number = 0;
+  public formatInput: number = 2;
 
   constructor(private fb:FormBuilder, private dialogRef: MatDialogRef<DlgModifyComponent>){
     this.forms = this.fb.group({

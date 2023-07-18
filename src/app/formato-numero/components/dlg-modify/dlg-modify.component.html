@@ -9,7 +9,7 @@
     <div>
       <mat-form-field style="margin: 1rem;">
         <mat-label>Formato</mat-label>
-        <mat-select matNativeControl formControlName="format">
+        <mat-select matNativeControl formControlName="format" [(ngModel)]="formatInput">
           <mat-option value="">Opciones</mat-option>
           <mat-option value="1">Milesimas Con . y decimales con ,</mat-option>
           <mat-option value="2">Milesimas Con , y decimales con .</mat-option>
@@ -20,7 +20,9 @@
 
       <mat-form-field style="margin-right: 1rem;">
         <mat-label>Introduce el número</mat-label>
-        <input matInput placeholder="100" type="number" formControlName="number">
+        <input matInput placeholder="100" type="number" formControlName="number" [(ngModel)]="numberInput">
+        <mat-hint align="start" *ngIf="formatInput == 2"><span>{{numberInput | number:'1.2-5' }}</span> </mat-hint>
+        <mat-hint align="start" *ngIf="formatInput != 2"><span>{{numberInput | format:formatInput }}</span> </mat-hint>
       </mat-form-field>
     </div>
 
