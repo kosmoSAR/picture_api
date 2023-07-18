@@ -10,27 +10,31 @@ import { Pictures, PicturesDTO } from 'src/app/interfaces/picture.interfaces';
 })
 export class DlgAddComponent {
 
-  public forms: FormGroup;
+  // public forms: FormGroup;
 
   constructor(private fb:FormBuilder, private dialogRef: MatDialogRef<DlgAddComponent>){
-    this.forms = this.fb.group({
-      FECHA:['', Validators.required],
-    })
+    // this.forms = this.fb.group({
+    //   FECHA:['', Validators.required],
+    // })
   }
 
   createPicture(){
-    const picture: PicturesDTO = {
-      FECHA: this.forms.value.FECHA,
+    const picture: any = {
+      // FECHA: this.forms.value.FECHA,
       NOMBRE: this.files[0]
     }
     this.dialogRef.close( picture )
   }
 
   files: File[] = [];
-  disabledOption: boolean = false
 
   onSelect(event: any) {
+    this.files.pop();
     this.files.push(...event.addedFiles);
-    this.disabledOption = true;
+  }
+
+  onRemove(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }

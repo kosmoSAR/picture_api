@@ -10,13 +10,15 @@ export class PictureService {
 
   private url:string = 'http://kosmetikon.myqnapcloud.com:44444'
 
-
   constructor(private http:HttpClient) { }
 
-
   getPictures():Observable<any>{
-    return this.http.get<any>(`${this.url}/files/getFileList`).pipe(
+    return this.http.get<any>(`${this.url}/getImageList`).pipe(
       map( pictures => pictures.data )
     )
+  }
+
+  deletePictures(id: any):Observable<any>{
+    return this.http.delete<any>(`${this.url}/deleteImage`, {body: id} )
   }
 }

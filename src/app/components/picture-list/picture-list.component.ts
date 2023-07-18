@@ -21,12 +21,10 @@ export class PictureListComponent implements OnChanges{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-    this.data.paginator = this.paginator;
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     this.data = new MatTableDataSource<Pictures>(this.pictureList);
+    this.data.paginator = this.paginator;
+    console.log(this.pictureList);
   }
 
   @Output() picture: EventEmitter<any> = new EventEmitter();
