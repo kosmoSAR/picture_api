@@ -25,7 +25,7 @@ export class FilesService {
     )
   }
 
-  uploadFile(file: Blob, nombre: string):Observable<any>{
+  uploadFile(file: Blob):Observable<any>{
     const imagen = new FormData();
     imagen.append('ARCHIVO', file );
     return this.http.post(`${this.url}/newImage` , imagen )

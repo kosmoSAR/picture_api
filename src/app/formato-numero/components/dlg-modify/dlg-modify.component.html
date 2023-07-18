@@ -1,0 +1,29 @@
+<div class="principal">
+  <div style="display: flex; flex-direction: row-reverse;">
+    <button mat-button [mat-dialog-close]="true">
+      <mat-icon style="margin-right: 0;">close</mat-icon>
+    </button>
+    <h2>Escoge El Formato</h2>
+  </div>
+  <form [formGroup]="forms" (ngSubmit)="modify()" style="display: flex; flex-direction: column;">
+    <div>
+      <mat-form-field style="margin: 1rem;">
+        <mat-label>Formato</mat-label>
+        <mat-select matNativeControl formControlName="format">
+          <mat-option value="">Opciones</mat-option>
+          <mat-option value="1">Milesimas Con . y decimales con ,</mat-option>
+          <mat-option value="2">Milesimas Con , y decimales con .</mat-option>
+          <mat-option value="3">Milesimas Con . y decimales con .</mat-option>
+          <mat-option value="4">Milesimas Con , y decimales con ,</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="margin-right: 1rem;">
+        <mat-label>Introduce el número</mat-label>
+        <input matInput placeholder="100" type="number" formControlName="number">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="forms.invalid">Cambiar</button>
+  </form>
+</div>
